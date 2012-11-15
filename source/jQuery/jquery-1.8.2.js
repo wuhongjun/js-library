@@ -723,6 +723,7 @@ jQuery.extend({
 		return -1;
 	},
 
+	//// merge two jQueryObject
 	merge: function( first, second ) {
 		var l = second.length,
 			i = first.length,
@@ -805,6 +806,9 @@ jQuery.extend({
 	proxy: function( fn, context ) {
 		var tmp, args, proxy;
 
+		//// jQuery.proxy( context, name )
+		//// 函数的上下文语境会被设置成这个 context 对象
+		//// name将要改变上下文语境的函数名(这个函数必须是前一个参数 'context' 对象的属性)
 		if ( typeof context === "string" ) {
 			tmp = fn[ context ];
 			context = fn;
@@ -818,12 +822,14 @@ jQuery.extend({
 		}
 
 		// Simulated bind
+		//// extra args after fn,context
 		args = core_slice.call( arguments, 2 );
 		proxy = function() {
 			return fn.apply( context, args.concat( core_slice.call( arguments ) ) );
 		};
 
 		// Set the guid of unique handler to the same of original handler, so it can be removed
+		//// if the fn's guid is not set,give it a guid
 		proxy.guid = fn.guid = fn.guid || jQuery.guid++;
 
 		return proxy;
@@ -956,6 +962,8 @@ rootjQuery = jQuery(document);
 var optionsCache = {};
 
 // Convert String-formatted options into Object-formatted ones and store in cache
+//// one 
+//// key对应的value是不变的
 function createOptions( options ) {
 	var object = optionsCache[ options ] = {};
 	jQuery.each( options.split( core_rspace ), function( _, flag ) {
@@ -974,22 +982,24 @@ function createOptions( options ) {
  * "fired" multiple times.
  *
  * Possible options:
- *
+ *	只能chu发一次, 也就是只能调用fire()一次, 再调用无效
  *	once:			will ensure the callback list can only be fired once (like a Deferred)
  *
  *	memory:			will keep track of previous values and will call any callback added
  *					after the list has been fired right away with the latest "memorized"
  *					values (like a Deferred)
- *
+ *	同一个函数只能add一次
  *	unique:			will ensure a callback can only be added once (no duplicate in the list)
- *
+ *	队列的函数返回false就停止,
  *	stopOnFalse:	interrupt callings when a callback returns false
  *
  */
+ //// 一个多用途的回调列表对象，提供了强大的的方式来管理回调函数列表。
 jQuery.Callbacks = function( options ) {
 
 	// Convert options from String-formatted to Object-formatted if needed
 	// (we check in cache first)
+	//// onck memory unique
 	options = typeof options === "string" ?
 		( optionsCache[ options ] || createOptions( options ) ) :
 		jQuery.extend( {}, options );
@@ -999,7 +1009,7 @@ jQuery.Callbacks = function( options ) {
 		// Flag to know if list was already fired
 		fired,
 		// Flag to know if list is currently firing
-		firing,
+		firing,	//// is正在触发, 执行list里的函数中
 		// First callback to fire (used internally by add and fireWith)
 		firingStart,
 		// End of the loop when firing
@@ -1017,7 +1027,7 @@ jQuery.Callbacks = function( options ) {
 			firingIndex = firingStart || 0;
 			firingStart = 0;
 			firingLength = list.length;
-			firing = true;
+			firing = true;	//// 正在触发
 			for ( ; list && firingIndex < firingLength; firingIndex++ ) {
 				if ( list[ firingIndex ].apply( data[ 0 ], data[ 1 ] ) === false && options.stopOnFalse ) {
 					memory = false; // To prevent further calls using add
@@ -1051,7 +1061,7 @@ jQuery.Callbacks = function( options ) {
 								list.push( arg );
 							} else if ( arg && arg.length && type !== "string" ) {
 								// Inspect recursively
-								add( arg );
+								add( arg );	////  add(f, [f, f])
 							}
 						});
 					})( arguments );

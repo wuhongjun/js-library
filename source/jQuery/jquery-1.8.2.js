@@ -11,6 +11,7 @@
  *
  * Date: Thu Sep 20 2012 21:13:05 GMT-0400 (Eastern Daylight Time)
  */
+
  /*
   * commenter: zenxds
   * Email: zenxds@gmail.com
@@ -145,7 +146,7 @@ jQuery.fn = jQuery.prototype = {
 					// scripts is true for back-compat 
 					//// 向后兼容 selector ['selector'] or [单DOM标签]
 					selector = jQuery.parseHTML( match[1], doc, true );
-					console.log(selector);
+		
 					if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
 						this.attr.call( selector, context, true );	
 						//// 访问新创建元素的属性，事件和方法

@@ -1,3 +1,3 @@
-(function(host) {
-	
-})(window);
+(function() {
+	var host = this;
+})();

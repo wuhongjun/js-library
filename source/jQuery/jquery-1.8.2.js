@@ -1052,9 +1052,10 @@ jQuery.Callbacks = function( options ) {
 		self = {
 			// Add a callback or a collection of callbacks to the list
 			add: function() {
-				if ( list ) {
+				if ( list ) {		//
 					// First, we save the current length
-					var start = list.length;
+					//// 原来的队列已经有函数了
+					var start = list.length; 
 					(function add( args ) {
 						jQuery.each( args, function( _, arg ) {
 							var type = jQuery.type( arg );

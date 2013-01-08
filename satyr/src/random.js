@@ -1,19 +1,43 @@
-(function() {
-	// 返回m-n之间的随机数，并取整, 
-	// 包括m, 不包括n - floor, ceil相反
-	var choice = function(m, n) {
+/*
+ * random
+ * export: random{choice}
+ */
+
+define(function(require, exports, module) {
+
+	var S = require('satyr'),
+		lang = require('lang'),
+
+		/*
+		 * 返回m-n之间的随机数，并取整, 
+		 * 包括m, 不包括n - floor, ceil相反
+		 * 也可以传入数组，随机返回数组某个元素
+		 */
+		choice = function(m, n) {
+			var array,
+				random;
+			if (S.isArray(m)) {
+				array = m;
+				m = 0;
+				n = array.length;
+			}
 			var tmp;
 			if (m > n) {
 				tmp = m;
 				m = n;
 				n = tmp;
 			}
-			return Math.floor(Math.random() * (n-m) + m);
+
+			random = Math.floor(Math.random() * (n-m) + m);
+			if (array) {
+				return array[random];
+			} 
+			return random;
 		};
-	// var o = [0, 0, 0, 0, 0, 0];
-	// for (var i = 1000 - 1; i >= 0; i--) {
-	// 	var t = choice(-1, 4);
-	// 	o[t] += 1;
-	// }
-	// console.log(o);
-})();
+
+	var ret = {
+        choice: choice
+    };
+    S.addSelfMark(ret);
+    S.mix(exports, ret);
+});

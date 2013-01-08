@@ -1,7 +1,15 @@
-define(function(require, exports, module) {
-	// cookie
+/*
+ * cookie
+ * export: cookie{set, get, remove}
+ */
 
+define(function(require, exports, module) {
+	
+
+    // require mod
     var S = require('satyr'),
+        lang = require('lang'),
+
     	isNotEmptyString = S.isNotEmptyString;
     
     var doc = document,
@@ -64,5 +72,9 @@ define(function(require, exports, module) {
         }
     };
 
-    S.mix(exports, cookie);
+    var ret = {
+        cookie: cookie
+    };
+    S.addSelfMark(ret);
+    S.mix(exports, ret);
 });

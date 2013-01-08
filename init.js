@@ -20,8 +20,8 @@
 
 	seajs.use(['satyr', 'cookie', 'encode', 'random', 'time', 'support', 'log', 'hash'], function(S) {
 		console.log(S);
-		S.assert('abc', 'pass');
-		S.assert('', 'fail');
+		S.assert('abc', 'fail in assert');
+		S.assertEqual('a', 0, 'fail in assertEqual');
 		S.log(S.hex_md5('abc'));
 	});
 })(seajs);

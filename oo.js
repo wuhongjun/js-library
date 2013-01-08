@@ -1,3 +1,0 @@
-(function() {
-	var host = this;
-})();

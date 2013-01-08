@@ -2,6 +2,7 @@
  * import jshash v2.2
  * author: http://pajhome.org.uk/crypt/md5/index.html
  * or you can search with keywords <js md5>
+ * exports hex_md5
  */
 define(function(require, exports, module) {
 	var S = require('satyr');

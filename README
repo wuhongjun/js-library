@@ -2,7 +2,9 @@ some js files
 
 
 ## satyr
-基于seajs和jQuery构建库
+基于seajs和jQuery和一些第三方库构建模块,类似python标准库
 
-有些方法可能其他库已经实现了，嗯。我不是在重复造轮子，只是练练手
+有些方法可能其他库已经实现了，嗯。我不是在重复造轮子，没准只是练练手
 
+## author list
+* zenxds

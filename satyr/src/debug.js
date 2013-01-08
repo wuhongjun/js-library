@@ -8,12 +8,12 @@ define(function(require, exports, module) {
 		host = S.host;
 
 	var document = host.document,
-		docBody = document.getElementsByTagName('body')[0],
+		docBody = document.body,
 		resultsClassName = "results",
 		resultsElem; // 一个ul元素 <ul class="results"></ul>	
 	
 	/* 
-	 * @param desc - description {String}
+	 * @ret - elem {ul dom element}
 	 * */
 	var createResultsElem = function() {
 			var elem = document.createElement("ul");
@@ -22,6 +22,10 @@ define(function(require, exports, module) {
 			docBody.appendChild(elem);
 			return elem;
 		},
+
+		/* 
+		 * @param desc - description {String}
+		 * */
 		assert = function(value, desc) {
 			var li = document.createElement('li'),
 				pre = 'assert: ';

@@ -15,7 +15,6 @@ define(function(require, exports, module) {
 	/* 
 	 * @param desc - description {String}
 	 * */
-
 	var createResultsElem = function() {
 			var elem = document.createElement("ul");
 			elem.className = resultsClassName;

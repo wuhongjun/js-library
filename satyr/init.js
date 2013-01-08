@@ -8,7 +8,8 @@
 		random: 'src/random.js',
 		time: 'src/time.js',
 		support: 'src/support.js',
-		log: 'src/debug.js'
+		log: 'src/debug.js',
+		hash: 'src/hash.js'
 	};
 
 	seajs.config({
@@ -17,13 +18,10 @@
 		preload: ['jquery']
 	});
 
-	seajs.use(['satyr', 'cookie', 'encode', 'random', 'time', 'support', 'log'], function(S, mod) {
+	seajs.use(['satyr', 'cookie', 'encode', 'random', 'time', 'support', 'log', 'hash'], function(S) {
 		console.log(S);
-		console.log(mod);
-		console.log(window.satyr);
-		console.log(S.now());
 		S.assert('abc', 'pass');
 		S.assert('', 'fail');
-		S.log('abc');
+		S.log(S.hex_md5('abc'));
 	});
 })(seajs);

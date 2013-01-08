@@ -4,7 +4,9 @@ define(function(require, exports, module) {
 
 	var _lib = host[libName],
 		lib  = host[libName] = {},
+
 		isSelfMark = 'isSelf',		// 通过判断该标志确定是否向库本身mix代码
+		
 		noConflict = function() {
 			host[libName] = _lib; 
 		},
@@ -38,11 +40,14 @@ define(function(require, exports, module) {
 	    };
 
 	mix(lib, {
+		EMPTY: '',
 		noop: function() {},
-		mix: mix,
+		
 		host: host,
+		
+		mix: mix,
 		noConflict: noConflict,
-		addSelfMark: addSelfMark
+		addSelfMark: addSelfMark,
 	})
 
 	return lib;

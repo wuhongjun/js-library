@@ -14,16 +14,16 @@
 	spm install gallery.module_name(jquery/marked/underscore/backbone/..)
 
 ## third part modules
-	* underscore
-	* jquery
-	* marked
+* underscore
+* jquery
+* marked
 
 ## satyr modules
-	* lange
-	* cookie
-	* hash 		哈希实现(md5)
-	* debug
-	* random 	随机
-	* support
-	* time
-	* encode
+* lange
+* cookie
+* hash 		哈希实现(md5)
+* debug
+* random 	随机
+* support
+* time
+* encode

@@ -1,4 +1,6 @@
 /*
+ * author: zenxds
+ * email: zenxds@gmail.com
  * time
  * export: now
  */
@@ -6,12 +8,10 @@
 define(function(require, exports, module) {
 	var S = require('satyr');
 
-	var ret = {
-        now: Date.now || function() {
+    S.mixInternal(exports, {
+    	now: Date.now || function() {
 	        return +new Date();
 	    }
-    };
-    S.addSelfMark(ret);
-    S.mix(exports, ret);
+    });
 
 });

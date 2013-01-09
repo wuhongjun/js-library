@@ -1,4 +1,6 @@
 /*
+ * author: zenxds
+ * email: zenxds@gmail.com
  * debug
  * export: log assert assertEqual
  */
@@ -65,11 +67,9 @@ define(function(require, exports, module) {
 			appendToResults(className, pre, msg);
 		};
 
-	var ret = {
+    S.mixInternal(exports, {
         assert: assert,
         assertEqual: assertEqual,
-        log: log,
-    };
-    S.addSelfMark(ret);
-    S.mix(exports, ret);
+        log: log
+    });
 });

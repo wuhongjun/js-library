@@ -1,4 +1,6 @@
 /*
+ * author: zenxds
+ * email: zenxds@gmail.com
  * random
  * export: random{choice}
  */
@@ -38,6 +40,5 @@ define(function(require, exports, module) {
 	var ret = {
         choice: choice
     };
-    S.addSelfMark(ret);
-    S.mix(exports, ret);
+    S.mixInternal(exports, ret);
 });

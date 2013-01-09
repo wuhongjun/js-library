@@ -1,5 +1,7 @@
 /*
- * cookie
+ * author: zenxds
+ * email: zenxds@gmail.com
+ * cookie -- from kissy
  * export: cookie{set, get, remove}
  */
 
@@ -72,9 +74,7 @@ define(function(require, exports, module) {
         }
     };
 
-    var ret = {
+    S.mixInternal(exports, {
         cookie: cookie
-    };
-    S.addSelfMark(ret);
-    S.mix(exports, ret);
+    });
 });

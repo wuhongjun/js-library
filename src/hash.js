@@ -1,4 +1,6 @@
 /*
+ * author: zenxds
+ * email: zenxds@gmail.com
  * import jshash v2.2
  * author: http://pajhome.org.uk/crypt/md5/index.html
  * or you can search with keywords <js md5>
@@ -386,6 +388,5 @@ define(function(require, exports, module) {
 	var ret = {
 		hex_md5: hex_md5
 	};
-	S.addSelfMark(ret);
-	S.mix(exports, ret);
+	S.mixInternal(exports, ret);
 });

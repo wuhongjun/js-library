@@ -35,10 +35,41 @@ define(function(require, exports, module) {
 				return array[random];
 			} 
 			return random;
+		},
+
+		/*
+		 * http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+		 * 洗牌算法
+		 * 多次运行测试是否足够随机
+		 * test code: https://gist.github.com/4507739
+		 */
+		shuffle = function(array) {
+			if (!S.isArray(array)) {
+				return [];
+			}
+
+			var length = array.length,
+				temp,
+				i = length, 
+				j;
+
+			if (length === 0) {
+				return [];
+			}
+
+			while (i > 1) {
+				i = i - 1;
+				j = choice(0, i)
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			return array;
 		};
 
 	var ret = {
-        choice: choice
-    };
-    S.mixInternal(exports, ret);
+		choice: choice,
+		shuffle: shuffle
+	};
+	S.mixInternal(exports, ret);
 });

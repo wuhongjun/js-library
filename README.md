@@ -27,3 +27,10 @@
 * support
 * time
 * encode
+
+## TODO List
+* 实现元素跟随滚动的效果 fixed
+* placeholder fix
+* modal like bootstrap modal
+* tip
+* autocomplete

@@ -20,12 +20,25 @@
 		preload: ['jquery']
 	});
 
-	seajs.use(['satyr', 'marked', 'lang', 'cookie', 'encode', 'time', 'support', 'random', 'log', 'hashlib'], function(S, marked) {
+	seajs.use(['satyr', 'underscore', 'marked', 'lang', 'cookie', 'encode', 'time', 'support', 'random', 'log', 'hashlib'], function(S, _, marked) {
 		console.log(S);
 		S.assert('abc', 'fail in assert');
 		S.assertEqual('a', 0, 'fail in assertEqual');
 		S.log(S.hex_md5('abc'));
-		S.log(marked('# h1'))
-		// S.noConflict();
+		S.log(marked('# h1'));
+		_.each([1, 2, 3], function(value, index, arr) {
+			S.log(value);
+		});
+
+		var o = {};
+		for (var i = 1000 - 1; i >= 0; i--) {
+			a = S.shuffle([1, 2, 3, 4, 5, 6]);
+			if (o[a[0]]) {
+				o[a[0]] += 1;
+			} else {
+				o[a[0]] = 1;
+			}
+		}
+		console.log(o);
 	});
 })(seajs);

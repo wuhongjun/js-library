@@ -11,7 +11,8 @@
 		time: 'src/time.js',
 		support: 'src/support.js',
 		log: 'src/debug.js',
-		hashlib: 'src/hash.js'
+		hashlib: 'src/hash.js',
+		sort: 'src/sort.js'
 	};
 
 	seajs.config({
@@ -20,7 +21,7 @@
 		preload: ['jquery']
 	});
 
-	seajs.use(['satyr', 'underscore', 'marked', 'lang', 'cookie', 'encode', 'time', 'support', 'random', 'log', 'hashlib'], function(S, _, marked) {
+	seajs.use(['satyr', 'underscore', 'marked', 'lang', 'cookie', 'encode', 'time', 'support', 'random', 'log', 'hashlib', 'sort'], function(S, _, marked) {
 		console.log(S);
 		S.assert('abc', 'fail in assert');
 		S.assertEqual('a', 0, 'fail in assertEqual');
@@ -30,15 +31,6 @@
 			S.log(value);
 		});
 
-		var o = {};
-		for (var i = 1000 - 1; i >= 0; i--) {
-			a = S.shuffle([1, 2, 3, 4, 5, 6]);
-			if (o[a[0]]) {
-				o[a[0]] += 1;
-			} else {
-				o[a[0]] = 1;
-			}
-		}
-		console.log(o);
+		S.log(S.insertSort([2, 5, 1, 6, 4, 7, 9]));
 	});
 })(seajs);

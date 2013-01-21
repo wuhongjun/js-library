@@ -46,7 +46,7 @@ define(function(require, exports, module) {
 		mix: mix,
 		mixInternal: mixInternal,
 		noConflict: noConflict
-	})
+	});
 
 	return lib;
 });

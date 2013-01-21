@@ -27,6 +27,8 @@
 * support
 * time
 * encode
+* sort 排序
+* copy
 
 ## TODO List
 * 实现元素跟随滚动的效果 fixed

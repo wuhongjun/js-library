@@ -26,7 +26,6 @@
 * mocha
 
 ## satyr modules
-* lange
 * cookie
 * hash 		哈希实现(md5)
 * debug

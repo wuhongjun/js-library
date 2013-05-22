@@ -6,7 +6,7 @@
  */
 
 define(function(require, exports, module) {
-	var S = require('satyr'),
+	var S = require('base'),
 
 		encodeHTML = function(text){
 		    return String(text).replace(/["<>& ]/g, function(all){

@@ -2,6 +2,7 @@
 	var alias = {
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
 
+		base: 'src/base.js',
 		lang: 'src/lang.js',
 		cookie: 'src/cookie.js',
 		encode: 'src/encode.js',

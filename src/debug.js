@@ -6,8 +6,7 @@
  */
 define(function(require, exports, module) {
 	// require mod
-	var S = require('satyr'),
-		lang = require('lang'),
+	var S = require('base'),
 		host = S.host;
 
 	var document = host.document,

@@ -25,9 +25,9 @@
 		preload: ['jquery']
 	});
 
-	seajs.use('less', function(less) {
-		console.log(less);
-	});
+	// seajs.use('less', function(less) {
+	// 	console.log(less);
+	// });
 	// seajs.use(['satyr', 'jquery','valueChange'], function(S, $, valueChange) {
 	// 	$.valueChange('#textarea', function(p, n) {
 	// 		console.log(p);

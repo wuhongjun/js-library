@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         tasks: ['jshint', 'concat', 'uglify']
       },
       less: {
-        files: 'src/less/*.less',
+        files: 'less/*.less',
         tasks: ['less']
       }
     }
@@ -64,6 +64,6 @@ module.exports = function(grunt) {
 
   // This is the default task being executed if Grunt
   // is called without any further parameter.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'watch']);
+  // grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'watch']);
 
 };

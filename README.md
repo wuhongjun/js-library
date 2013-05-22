@@ -1,9 +1,15 @@
 # satyr
-基于seajs,jQuery backbone和一些第三方库构建模块,类似python标准库
+基于seajs,jQuery和一些第三方库构建模块,类似python标准库
 
 ## author list
 * zenxds
 * [sirzxj](https://github.com/sirzxj)
+
+## 目录
+	gallery						-- spm提供的已经以CMD格式封装好的通用库都在这里
+	src 						-- 源码目录
+	node_modules				-- Grunt用到的插件
+	dist						-- 发布目录
 
 ## spm install
 1. node 版本不能太低，最好安装最新的 [nodejs.org](http://nodejs.org/)
@@ -15,8 +21,9 @@
 
 ## third part modules
 * underscore
+* mustache
 * jquery
-* marked
+* mocha
 
 ## satyr modules
 * lange

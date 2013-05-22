@@ -69,12 +69,13 @@ define(function(require, exports, module) {
 		},
 
 		// {{ name }} -> {{ o[name] }}
-		// based on Django
+		// \{{}} -> \{{}}
+		// based on Django, fix kissy, support blank -> {{ name }}, not only {{name}}
 		substitute: function(str, o, regexp) {
 			if (!isString(str)) {
 				return str;
 			}
-			return str.replace(regexp || /\\?\{\{\s*([^{}]+)\}\}/g, function(match, name) {
+			return str.replace(regexp || /\\?\{\{\s*([^{}\s]+)\s*\}\}/g, function(match, name) {
 				if (match.charAt(0) === '\\') {
 					return match.slice(1);
 				}

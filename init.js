@@ -16,7 +16,7 @@ define(function(require) {
 	// t();
 	// 
 	
-	var template = "{{  name  }}",
+	var template = "{{name  }}",
 		context = {'name': 'alex'};
 
 	log(S.substitute(template, context));

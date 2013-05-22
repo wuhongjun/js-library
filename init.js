@@ -3,6 +3,9 @@
 		jquery: 'sea-modules/gallery/jquery/1.8.3/jquery.js',
 		underscore: 'sea-modules/gallery/underscore/1.4.3/underscore.js',
 		marked: 'sea-modules/gallery/marked/0.2.4/marked.js',
+		mocha: 'sea-modules/gallery/mocha/1.7.3/mocha.js',
+		less: 'sea-modules/gallery/less/1.3.1/less.js',
+
 		satyr: 'seed.js',
 		lang: 'src/lang.js',
 		cookie: 'src/cookie.js',
@@ -22,12 +25,15 @@
 		preload: ['jquery']
 	});
 
-	seajs.use(['satyr', 'jquery','valueChange'], function(S, $, valueChange) {
-		$.valueChange('#textarea', function(p, n) {
-			console.log(p);
-			console.log(n);
-		});
+	seajs.use('less', function(less) {
+		console.log(less);
 	});
+	// seajs.use(['satyr', 'jquery','valueChange'], function(S, $, valueChange) {
+	// 	$.valueChange('#textarea', function(p, n) {
+	// 		console.log(p);
+	// 		console.log(n);
+	// 	});
+	// });
 	// seajs.use(['satyr', 'underscore', 'marked', 'lang', 'cookie', 'encode', 'time', 'support', 'random', 'log', 'hashlib', 'sort'], function(S, _, marked) {
 	// 	console.log(S);
 	// 	S.assert('abc', 'fail in assert');

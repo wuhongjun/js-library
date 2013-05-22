@@ -1,8 +1,7 @@
-(function(seajs) { 
+(function(seajs) {
 	var alias = {
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
 
-		satyr: 'seed.js',
 		lang: 'src/lang.js',
 		cookie: 'src/cookie.js',
 		encode: 'src/encode.js',
@@ -12,7 +11,9 @@
 		log: 'src/debug.js',
 		hashlib: 'src/hash.js',
 		sort: 'src/sort.js',
-		valueChange: 'src/valuechange.js'
+
+		// components
+		valueChange: 'components/valuechange.js'
 	};
 
 	seajs.config({
@@ -21,7 +22,14 @@
 		charset: 'utf-8',
 
 		alias: alias,
-		
+
+		vars: {
+		},
+
+		map: [
+			// ['.js', '-debug.js']
+		],
+
 		// 预加载项
 		preload: [
 			Function.prototype.bind ? '' : 'es5-safe',
@@ -29,7 +37,9 @@
 		],
 
 		paths: {
-			'gallery': 'sea-modules/gallery'
+			'gallery': 'gallery',
+			'src': 'src',
+			'components': 'src/components'
 		},
 
 		plugins: ['text', 'shim']

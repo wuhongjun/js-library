@@ -5,7 +5,7 @@
 
 		base: 'src/base.js',
 		lang: 'src/lang.js',
-		cookie: 'src/cookie.js',
+		cookie: 'src/components/cookie.js',
 		encode: 'src/encode.js',
 		random: 'src/random.js',
 		time: 'src/time.js',

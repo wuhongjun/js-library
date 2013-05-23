@@ -9,8 +9,7 @@ define(function(require, exports, module) {
 	
 
     // require mod
-    var S = require('satyr'),
-        lang = require('lang'),
+    var S = require('base'),
 
     	isNotEmptyString = S.isNotEmptyString;
     
@@ -74,7 +73,5 @@ define(function(require, exports, module) {
         }
     };
 
-    S.mixInternal(exports, {
-        cookie: cookie
-    });
+    S.mix(exports, cookie);
 });

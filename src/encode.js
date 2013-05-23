@@ -9,20 +9,20 @@ define(function(require, exports, module) {
 	var S = require('base'),
 
 		encodeHTML = function(text){
-		    return String(text).replace(/["<>& ]/g, function(all){
-		        return "&" + {
-		            '"': 'quot',
-		            '<': 'lt',
-		            '>': 'gt',
-		            '&': 'amp',
-		            ' ': 'nbsp'
-		        }[all] + ";";
-		    });
+		return String(text).replace(/["<>& ]/g, function(all){
+			return "&" + {
+				'"': 'quot',
+				'<': 'lt',
+				'>': 'gt',
+				'&': 'amp',
+				' ': 'nbsp'
+				}[all] + ";";
+			});
 		};
 
 	var ret = {
         encodeHTML: encodeHTML
     };
-    S.mixInternal(exports, ret);
+    S.mix(exports, ret);
 
 });

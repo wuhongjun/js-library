@@ -43,4 +43,5 @@
 * tip
 * autocomplete
 
-## 测试准备
+## test framework
+jasmine

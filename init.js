@@ -1,6 +1,5 @@
 define(function(require) {
-	var $ = require('jquery'),
-		mocha = require('mocha');
+	var $ = require('jquery');
 
 	var log = seajs.log;
 

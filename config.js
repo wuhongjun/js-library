@@ -1,6 +1,7 @@
 (function(seajs) {
 	var alias = {
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
+		mocha: 'gallery/mocha/1.9.0/mocha.js',
 
 		base: 'src/base.js',
 		lang: 'src/lang.js',

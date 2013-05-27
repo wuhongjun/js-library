@@ -1,6 +1,9 @@
 /*
  * author: zenxds
  * email: zenxds@gmail.com
+ * base作为对类库的补充
+ * 如果相似功能较多或功能相对独立可拆分为多个文件
+ * 接口如果稳定可在其他依赖文件里直接复制一份以减少依赖（如果对base的依赖接口少于3个）
  */
 
 define(function(require, exports, module) {

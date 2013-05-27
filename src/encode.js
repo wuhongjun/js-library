@@ -6,9 +6,8 @@
  */
 
 define(function(require, exports, module) {
-	var S = require('base'),
 
-		encodeHTML = function(text){
+	var	encodeHTML = function(text){
 		return String(text).replace(/["<>& ]/g, function(all){
 			return "&" + {
 				'"': 'quot',
@@ -23,6 +22,6 @@ define(function(require, exports, module) {
 	var ret = {
         encodeHTML: encodeHTML
     };
-    S.mix(exports, ret);
-
+    
+    return ret;
 });

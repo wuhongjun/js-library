@@ -7,8 +7,8 @@
 
 define(function(require, exports, module) {
 
-	var S = require('satyr'),
-		lang = require('lang'),
+	var S = require('base'),
+
 
 		/*
 		 * 返回m-n之间的随机数，并取整, 

@@ -1,11 +1,9 @@
 define(function(require, exports, module) {
 	var S = require('localstorage');
 
-	describe("set", function() {
+	describe("localstorage", function() {
 		beforeEach(function() {
-			if (location.protocol === 'file:') {
-				return;
-			}
+
 		});
 
 		it("should set successfully", function(){
@@ -13,15 +11,15 @@ define(function(require, exports, module) {
 			expect(S.getItem('name')).toEqual('alex');
 		});
 
-		// it("should remove successfully", function(){
-		// 	S.removeItem('name');
-		// 	expect(S.getItem('name')).toBeFalsy();
-		// });
+		it("should remove successfully", function(){
+			S.removeItem('name');
+			expect(S.getItem('name')).toBeFalsy();
+		});
 
-		// it("should clear successfully", function(){
-		// 	S.setItem('name', 'john');
-		// 	S.clear();
-		// 	expect(S.getItem('name')).toBeFalsy();
-		// });
+		it("should clear successfully", function(){
+			S.setItem('name', 'john');
+			S.clear();
+			expect(S.getItem('name')).toBeFalsy();
+		});
 	});
 });

@@ -7,7 +7,6 @@
  * exports hex_md5
  */
 define(function(require, exports, module) {
-	var S = require('satyr');
 
 	/*
 	 * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -386,7 +385,7 @@ define(function(require, exports, module) {
 
 
 	var ret = {
-		hex_md5: hex_md5
+		md5: hex_md5
 	};
-	S.mixInternal(exports, ret);
+	return ret;
 });

@@ -1,6 +1,8 @@
 define(function(require, exports, module) {
-	var S = require('base');
+	
+var S = require('base');
 
+describe('base', function() {
 	describe("isString", function() {
 		var isString;	// 在此处可以不放在beforeEach里,但是最好放在里面保证在每一个spec里都能正确运行
 		beforeEach(function() {
@@ -139,4 +141,6 @@ define(function(require, exports, module) {
 			expect(S.now).toHaveBeenCalled();
 		});
 	});
+});		// end base describe
+
 });

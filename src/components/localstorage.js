@@ -73,5 +73,5 @@ define(function(require, exports, module) {
 	}();
 
 
-	return localStorage;
+	return window.localStorage;
 });

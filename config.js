@@ -4,15 +4,14 @@
 		mocha: 'gallery/mocha/1.9.0/mocha.js',
 
 		base: 'src/base.js',
-		lang: 'src/lang.js',
 		cookie: 'src/components/cookie.js',
 		encode: 'src/encode.js',
 		random: 'src/random.js',
-		time: 'src/time.js',
 		support: 'src/support.js',
 		log: 'src/debug.js',
 		hashlib: 'src/hash.js',
 		sort: 'src/sort.js',
+		win: 'src/window.js',
 
 		// components
 		valueChange: 'components/valuechange.js',

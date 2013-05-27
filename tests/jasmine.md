@@ -11,6 +11,7 @@ it() 一个spec描述该套间一小部分应该做的,只应当测试一个案�
 
 ## Matchers
 	toEqual, toBe(===)
+	jasmine.any(String)
 	toBeTruthy, toBeFalsy => expect({}).toBeTruthy();
 	expect(foo).not.toEqual(bar)
 	toContain
@@ -18,5 +19,4 @@ it() 一个spec描述该套间一小部分应该做的,只应当测试一个案�
 	expect(12.34).toBeCloseTo(12.3, 1); // success
 	expect("foo bar").toMatch(/bar/);
 	toBeGreaterThan, toBeLessThan
-
 ## spy

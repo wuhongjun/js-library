@@ -1,5 +1,6 @@
 (function(seajs) {
 	var alias = {
+		$: 'gallery/jquery/1.8.3/jquery.js',
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
 		mocha: 'gallery/mocha/1.9.0/mocha.js',
 
@@ -15,7 +16,9 @@
 
 		// components
 		valueChange: 'components/valuechange.js',
-		localstorage: 'components/localstorage.js'
+		localstorage: 'components/localstorage.js',
+		placeholder: 'components/placeholder.js',
+		slide: 'components/slide.js'
 	};
 
 	seajs.config({
@@ -36,6 +39,7 @@
 		preload: [
 			// Function.prototype.bind ? '' : 'es5-safe',
 			// this.JSON ? '' : 'json'
+			'placeholder'
 		],
 
 		paths: {

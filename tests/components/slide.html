@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	</style>
+</head>
+<body>
+	<div id="covers">
+		<a href="#" style="display: none;"><img src="assets/images/cover-2.jpg" alt=""></a>
+		<a href="#" class="fn-hide" style="display: none;"><img src="assets/images/cover-1.jpg" alt=""></a>
+		<a href="#" class="fn-hide" style="display: inline;"><img src="assets/images/cover-3.jpg" alt=""></a>
+	</div>
+	<div id="cover-indexes" class="fn-list">
+				<a class="fn-inline" href="javascript:;" data-index="1">1</a>
+				<a class="fn-inline" href="javascript:;" data-index="2">2</a>
+				<a class="fn-inline current" href="javascript:;" data-index="3">3</a>
+			</div>
+
+	<script id="seajsnode" src="../../seajs/2.0.0/sea.js" data-config="config.js"></script>
+	<script>
+	seajs.use('slide', function() {
+		
+	});
+	</script>
+</body>
+</html>

@@ -71,5 +71,5 @@ define(function(require, exports, module) {
 		choice: choice,
 		shuffle: shuffle
 	};
-	S.mixInternal(exports, ret);
+	return ret;
 });

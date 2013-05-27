@@ -13,5 +13,5 @@ define(function(require, exports, module) {
         supportPlaceholder: supportPlaceholder
     };
 
-    S.mixInternal(exports, ret);
+    return ret;
 });

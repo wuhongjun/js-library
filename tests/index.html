@@ -12,8 +12,15 @@
 	
 
 <script>
+var testArray = [
+	'jquery', 
+	'tests/specHelper', 
+	'tests/base.spec', 
+	'tests/components/cookie.spec',
+	'tests/components/localstorage.spec'
+	];
 
-seajs.use(['jquery', 'tests/specHelper', 'tests/base.spec'], function($) {
+seajs.use(testArray, function($) {
 	$(function() {
 		var jasmineEnv = jasmine.getEnv();
 		jasmineEnv.updateInterval = 1000;

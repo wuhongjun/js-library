@@ -12,13 +12,8 @@ define(function(require, exports, module) {
 		});
 
 		it("should set successfully", function(){
-			set('name', 'alex', 'http://zenxds.info', 3600);
+			set('name', 'alex', 'zenxds.info');
 			expect(get('name')).toEqual('alex');
 		});
 	});
-	// describe("", function() {
-	// 	it("should", function() {
-	// 		expect(S.()).toEqual();
-	// 	});
-	// });
 });

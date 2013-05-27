@@ -15,7 +15,8 @@
 		sort: 'src/sort.js',
 
 		// components
-		valueChange: 'components/valuechange.js'
+		valueChange: 'components/valuechange.js',
+		localstorage: 'components/localstorage.js'
 	};
 
 	seajs.config({
@@ -34,8 +35,8 @@
 
 		// 预加载项
 		preload: [
-			Function.prototype.bind ? '' : 'es5-safe',
-			this.JSON ? '' : 'json'
+			// Function.prototype.bind ? '' : 'es5-safe',
+			// this.JSON ? '' : 'json'
 		],
 
 		paths: {

@@ -7,12 +7,19 @@
 
 define(function(require, exports, module) {
 	
+    // base
+    var toString = Object.prototype.toString,
 
-    // require mod
-    var S = require('base'),
+        isString = function(val) {
+            return toString.call(val) === '[object String]';
+        },
 
-    	isNotEmptyString = S.isNotEmptyString;
-    
+        isNotEmptyString = function(val) {
+            return isString(val) && val !== '';
+        };
+
+
+    // kissy start
     var doc = document,
         MILLISECONDS_OF_DAY = 24 * 60 * 60 * 1000,
         encode = encodeURIComponent,
@@ -63,7 +70,6 @@ define(function(require, exports, module) {
                 text += '; secure';
             }
 
-            //S.log(text);
             doc.cookie = name + '=' + text;
         },
 
@@ -73,5 +79,5 @@ define(function(require, exports, module) {
         }
     };
 
-    S.mix(exports, cookie);
+    module.exports = cookie;
 });

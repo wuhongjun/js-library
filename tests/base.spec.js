@@ -128,7 +128,7 @@ describe('base', function() {
 		});
 	});
 
-	describe('tes spy', function() {
+	xdescribe('tes spy', function() {
 		beforeEach(function() {
 
 		});

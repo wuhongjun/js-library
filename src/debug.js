@@ -7,7 +7,7 @@
 define(function(require, exports, module) {
 	// require mod
 	var S = require('base'),
-		host = S.host;
+		host = window;
 
 	var document = host.document,
 		docBody = document.body,
@@ -66,7 +66,7 @@ define(function(require, exports, module) {
 			appendToResults(className, pre, msg);
 		};
 
-    S.mixInternal(exports, {
+    S.mix(exports, {
         assert: assert,
         assertEqual: assertEqual,
         log: log

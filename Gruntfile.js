@@ -4,17 +4,22 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+
+    transport: {
+      options: {
+        format: 'cmd/{{filename}}', // id format
+      },
+      src: {
+        files: [{
+          cwd: 'src',
+          src: '**/*',
+          dest: 'cmd'
+        }]
+      }
+    },
     // A list of files, which will be syntax-checked by JSHint
     jshint: {
       all: ['src/*.js']
-    },
-
-    less: {
-      compile: {
-        files: {
-          'assets/css/main.css': 'src/less/main.less'
-        }
-      }
     },
 
     // Files to be concatenated … (source and destination files)
@@ -22,7 +27,7 @@ module.exports = function(grunt) {
       options: {
         separator: ';',
         banner: '/*! <%= pkg.name %> -- <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      }, 
+      },
       dist: {
         src: ['src/src1.js', 'src/src2.js', 'src/src3.js'],
         dest: 'dist/built.js'
@@ -46,11 +51,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: 'src/*.js',
-        tasks: ['jshint', 'concat', 'uglify']
-      },
-      less: {
-        files: 'less/*.less',
-        tasks: ['less']
+        tasks: ['jshint']
       }
     }
   });
@@ -62,8 +63,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
 
+  // grunt.loadNpmTasks('grunt-cmd-transport');
+
   // This is the default task being executed if Grunt
   // is called without any further parameter.
-  // grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'watch']);
+  grunt.registerTask('default', ['jshint', 'watch']);
 
+  // grunt.registerTask('build', ['transport']);
 };

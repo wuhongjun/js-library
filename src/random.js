@@ -59,7 +59,7 @@ define(function(require, exports, module) {
 
 			while (i > 1) {
 				i = i - 1;
-				j = choice(0, i)
+				j = choice(0, i);
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;

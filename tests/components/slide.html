@@ -8,24 +8,74 @@
 		margin: 0;
 		padding: 0;
 	}
+	#covers {
+		height: 147px;
+		overflow: hidden;
+	}
+	#covers a, img {
+		display: block;
+	}
+
+	#slide {
+		overflow: hidden;
+		width: 415px;
+		/*height: 460px;*/
+	}
+	.slide-wrap {
+		overflow: auto;
+	}
+	.slide-item {
+		float: left;
+	}
 	</style>
 </head>
 <body>
 	<div id="covers">
-		<a href="#" style="display: none;"><img src="assets/images/cover-2.jpg" alt=""></a>
-		<a href="#" class="fn-hide" style="display: none;"><img src="assets/images/cover-1.jpg" alt=""></a>
-		<a href="#" class="fn-hide" style="display: inline;"><img src="assets/images/cover-3.jpg" alt=""></a>
+		<a href="#" style=""><img src="http://img04.taobaocdn.com/tps/i4/T1m21JXwpcXXcK5yEA-295-147.jpg" alt=""></a>
+		<a href="#"><img src="http://img01.taobaocdn.com/tps/i1/T1R7aIXvpeXXcK5yEA-295-147.jpg" alt=""></a>
+		<a href="#"><img src="http://img02.taobaocdn.com/tps/i2/T1mzuJXpBcXXcK5yEA-295-147.jpg" alt=""></a>
 	</div>
-	<div id="cover-indexes" class="fn-list">
-				<a class="fn-inline" href="javascript:;" data-index="1">1</a>
-				<a class="fn-inline" href="javascript:;" data-index="2">2</a>
-				<a class="fn-inline current" href="javascript:;" data-index="3">3</a>
+	<div id="cover-indexes">
+		<a class="fn-inline" href="javascript:;" data-index="0">1</a>
+		<a class="fn-inline" href="javascript:;" data-index="1">2</a>
+		<a class="fn-inline" href="javascript:;" data-index="2">3</a>
+	</div>
+		
+		<a class="fn-inline prev" href="javascript:;">prev</a>
+		<a class="fn-inline next" href="javascript:;">next</a>
+
+	<div id="slide">
+		<div class="slide-wrap">
+			<div class="slide-item">
+				<a href="" target="_blank"><img src="http://img02.taobaocdn.com/tps/i2/T1HlCuXwViXXXaWRsX-415-460.jpg" alt="">	</a>
 			</div>
 
+			<div class="slide-item">
+				<a href=""><img src="http://img01.taobaocdn.com/tps/i1/T1ycKHXDxcXXXaWRsX-415-460.jpg" alt="">	</a>
+
+			</div>
+			<div class="slide-item">
+				<a href=""><img src="http://img02.taobaocdn.com/tps/i2/T1HlCuXwViXXXaWRsX-415-460.jpg" alt="">	</a>
+			</div>
+
+		</div>
+	</div>
 	<script id="seajsnode" src="../../seajs/2.0.0/sea.js" data-config="config.js"></script>
 	<script>
-	seajs.use('slide', function() {
-		
+	seajs.use('slide', function(S) {
+		S({
+			slide: '#covers',
+			slideItem: 'a',
+
+			thumb: '#cover-indexes',
+			thumbItem: 'a'
+		});
+
+		S({
+			slide: '.slide-wrap',
+			toggleType: 'slide',
+			width: 415
+		});
 	});
 	</script>
 </body>

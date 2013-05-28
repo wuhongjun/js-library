@@ -1,48 +1,47 @@
 define(function(require, exports, module) {
 
-	var slidePlayer = function(object, options) {
+	var $ = require('jquery');
+
+	var slidePlayer = function(options) {
+
+		var def = {
+			thumb: '.thumb',
+			thumbItem: '.thumb-item', // use $.on
+			thumbActiveClass: 'current',
+			eventType: 'click',
+			indexAttr: 'data-index',
+
+			slide: '.slide',
+			slideItem: '.slide-item',
+			slideActiveClass: 'current',
+
+			prevSelector: '.prev',
+			nextSelector: '.next',
+
+			time: 3000,
+			isAuto: true,
+			toggleType: 'fade',
+			toggleCallback: function($slideItem, $thumbItem) {
+
+			}
+		};
+
 
 		var slide = {};
 
-		slide._data = {
+		slide.util = {};
 
-			obj: $(object),
-
-			def: {
-				thumb: {
-
-					activeClass: 'current'
-				},
-				item: {
-					activeClass: 'current'
-				},
-				thumb: '.thumb',
-				thumbSelector: 'li',
-				itemSelector: 'li',
-
-				activeClass: 'current',
-				indexAttr: 'data-index', // start from 1
-
-				time: 3000,
-				page: 1 // start number, from 1
-			},
-
-			opt: options
-
-		};
-
-		slide._util = {};
-
-		slide._fn = {};
+		slide.fn = {};
 
 		/**
 		 *  util
-		 */ (function(data, util) {
+		 */ 
+		(function(util) {
 
 			var opt, num;
 
-			util.getAttr = function(k) {
-				opt = opt || $.extend(data.def, data.opt);
+			util.getOption = function(k) {
+				opt = opt || $.extend({}, def, options);
 				return opt[k];
 			};
 
@@ -50,147 +49,176 @@ define(function(require, exports, module) {
 				return num;
 			};
 
-			// next item to display
 			util.setNum = function(n) {
 				num = n;
 			};
 
-		})(slide._data, slide._util);
+		})(slide.util);
 
 		/**
 		 * fn.init
-		 */ (function(data, util, fn) {
+		 */
+		(function(util, fn) {
 
-			var obj = data.obj,
-				$item = obj.find(util.getAttr('itemSelector')),
-				$thumb = $(util.getAttr('thumb') || '');
+			var getOption = util.getOption,
+				$slide = $(getOption('slide')),
+				$slideItems = $slide.find(getOption('slideItem')),
+				$thumb = $(getOption('thumb')),
+				$thumbItems = $thumb.find(getOption('thumbItem')),
+				$prev = $(getOption('prevSelector')),
+				$next = $(getOption('nextSelector'));
 
 			fn.init = (function() {
-				//
-			})();
+				if (getOption('toggleType') == 'slide') {
+					var width = parseInt(util.getOption('width'), 10);
+                	$slide.css('width', width*$slideItems.length);
+				}
+                util.setNum(1);
+            })();
 
-			fn.getItem = function() {
-				return $item;
+			fn.getSlide = function() {
+				return $slide;
 			};
-
 			fn.getThumb = function() {
 				return $thumb;
+			}
+
+			fn.getSlideItems = function() {
+				return $slideItems;
 			};
 
-		})(slide._data, slide._util, slide._fn);
+			fn.getThumbItems = function() {
+				return $thumbItems;
+			};
+
+			fn.getPrev = function() {
+				return $prev;
+			};
+
+			fn.getNext = function() {
+				return $next;
+			}
+
+
+		})(slide.util, slide.fn);
 
 		/**
 		 * fn.bind
 		 */
 
-		(function(data, util, fn) {
-			var item = fn.getItem(),
-				len = item.length,
-				thumbSelector = util.getAttr('thumbSelector'),
-				prevSelector = util.getAttr('prevSelector'),
-				nextSelector = util.getAttr('nextSelector'),
+		(function(util, fn) {
+			var $slide = fn.getSlide(),
+				$slideItems = fn.getSlideItems(),
 				$thumb = fn.getThumb(),
-				index;
+				$thumbItems = fn.getThumbItems(),
+				$prev = fn.getPrev(),
+				$next = fn.getNext();
+
+			var	length = $slideItems.length,
+				index,
+				getOption = util.getOption;
 
 			fn.bind = (function() {
 
-				$thumb.on('click', thumbSelector, function() {
-					// fn.auto(false);
-					util.setNum(parseInt($(this).attr(util.getAttr('indexAttr')), 10) - 1);
-					fn.toggle();
-				});
-				// .on('mouseleave', thumbSelector, function() {
-				//     fn.auto(true);
-				// });
+				$thumb.on(getOption('eventType'), getOption('thumbItem'), function() {
+					fn.stop();
 
-				if (nextSelector) {
-					$(nextSelector).on('click', function() {
-						// fn.auto(false);
-						fn.toggle();
-						// fn.auto(true);
-					});
-				}
-				if (prevSelector) {
-					$(prevSelector).on('click', function() {
-						// fn.auto(false);
-						index = util.getNum() - 2;
-						if (index < 0) {
-							index = index + len;
-						}
-						util.setNum(index);
-						fn.toggle();
-						// fn.auto(true);
-					});
-				}
+					index = parseInt($(this).attr(getOption('indexAttr')), 10) || $(this).index();
+					util.setNum(index);
+					fn.toggle();
+
+					fn.play();
+				});
+
+				$next.on('click', function() {
+					fn.stop();
+					fn.next();
+					fn.play();
+				});
+				$prev.on('click', function() {
+					fn.stop();
+					fn.prev();
+					fn.play();
+				});
 			})();
 
-		})(slide._data, slide._util, slide._fn);
+		})(slide.util, slide.fn);
 
 		/**
-		 * fn.toggle
-		 */ (function(util, fn, data) {
+		 * fn.toggle, next() prev()
+		 */
+		(function(util, fn) {
+			var $slide = fn.getSlide(),
+				$slideItems = fn.getSlideItems(),
+				$thumb = fn.getThumb(),
+				$thumbItems = fn.getThumbItems(),
+				$prev = fn.getPrev(),
+				$next = fn.getNext();
 
-			var item = fn.getItem(),
-				thumb = fn.getThumb(),
-				thumbs = thumb.find(util.getAttr('thumbSelector')),
-				len = item.length,
-				obj = data.obj,
-				activeClass = util.getAttr('activeClass'),
-				t = null,
-				clear = function() {
-					if (t) {
-						clearInterval(t);
-						t = null;
-					}
-				};
+			var length = $slideItems.length,
+				getOption = util.getOption,
+				thumbActiveClass = getOption('thumbActiveClass'),
+				slideActiveClass = getOption('slideActiveClass'),
+				toggleCallback = getOption('toggleCallback');
 
 
 			fn.toggle = function() {
 				var n = util.getNum(),
-					l = len,
-					count = 0;
+					toggleType = getOption('toggleType'),
+					width;
 
-				clear();
-
-				if (n < l - 1) {
+				// next
+				if (n < length - 1) {
 					util.setNum(n + 1);
 				} else {
 					util.setNum(0);
 				}
 
-				item.hide();
-				item.eq(n).fadeIn(200); // start from 0
-
-				thumbs.removeClass(activeClass);
-				thumbs.eq(n).addClass(activeClass);
-				if (util.getAttr('isSpecial')) {
-					t = setInterval(function() {
-						thumbs.eq(n).removeClass(activeClass);
-						n = n + 1;
-						if (n > l - 1) {
-							n = n - l;
-						}
-						thumbs.eq(n).addClass(activeClass);
-
-						count = count + 1;
-						if (count > l - 1) {
-							clear();
-						}
-					}, 500);
+				if (toggleType == 'fade') {
+					$slideItems.hide();
+					$slideItems.eq(n).fadeIn(200); // start from 0
+				}
+				if (toggleType == 'slide') {
+					width = parseInt(getOption('width'), 10);
+					$slide.stop().animate({
+	                    marginLeft: - (width * n) 
+	                }, 300);
 				}
 
+				$slideItems.removeClass(slideActiveClass);
+				$slideItems.eq(n).addClass(slideActiveClass);
+				$thumbItems.removeClass(thumbActiveClass);
+				$thumbItems.eq(n).addClass(thumbActiveClass);
+				toggleCallback.call(slidePlayer, $slideItems.eq(n), $thumbItems.eq(n));
 			};
 
-		})(slide._util, slide._fn, slide._data);
+			fn.next = function() {
+				fn.toggle();
+			};
+
+			fn.prev = function() {
+				var n = util.getNum();
+				
+				var index = n - 2;
+				if (index < 0) {
+					index = index + length;
+				}
+				util.setNum(index);
+				fn.toggle();
+			};
+
+
+		})(slide.util, slide.fn);
 
 		/**
-		 * fn.auto
+		 * fn.play stop
 		 */
 
-		(function(data, util, fn) {
+		(function(util, fn) {
 
 			var t,
-				time = util.getAttr("time"),
+				getOption = util.getOption,
+				time = getOption("time"),
 				toggle = fn.toggle;
 
 			var interval = function() {
@@ -198,23 +226,22 @@ define(function(require, exports, module) {
 				t = setTimeout(interval, time);
 			};
 
-			fn.auto = function(flag) {
-
-				if (flag) {
-					t = setTimeout(interval, time);
-				} else {
-					clearTimeout(t); // stop
-				}
-
+			fn.play = function() {
+				t = setTimeout(interval, time);
 			};
 
-			util.setNum(util.getAttr("page"));
-			// fn.auto(true);
+			fn.stop = function() {
+				clearTimeout(t);
+			};
+			
+			if (getOption('isAuto')) {
+				fn.play();
+			}
 
-		})(slide._data, slide._util, slide._fn);
+		})(slide.util, slide.fn);
 
 	};
 
-	$.slidePlayer = slidePlayer;
+	return slidePlayer;
 
 });

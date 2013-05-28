@@ -3,9 +3,10 @@
 		$: 'gallery/jquery/1.8.3/jquery.js',
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
 		json: 'gallery/json/1.0.2/json.js',
+		handlebars: 'gallery/handlebars/1.0.1/handlebars.js',
+		underscore: 'gallery/underscore/1.4.3/underscore.js',
 
 		base: 'src/base.js',
-		cookie: 'src/components/cookie.js',
 		encode: 'src/encode.js',
 		random: 'src/random.js',
 		support: 'src/support.js',
@@ -15,6 +16,7 @@
 		win: 'src/window.js',
 
 		// components
+		cookie: 'src/components/cookie.js',
 		valueChange: 'components/valuechange.js',
 		store: 'components/store.js',
 		placeholder: 'components/placeholder.js',

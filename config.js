@@ -2,7 +2,7 @@
 	var alias = {
 		$: 'gallery/jquery/1.8.3/jquery.js',
 		jquery: 'gallery/jquery/1.8.3/jquery.js',
-		mocha: 'gallery/mocha/1.9.0/mocha.js',
+		json: 'gallery/json/1.0.2/json.js',
 
 		base: 'src/base.js',
 		cookie: 'src/components/cookie.js',
@@ -16,7 +16,7 @@
 
 		// components
 		valueChange: 'components/valuechange.js',
-		localstorage: 'components/localstorage.js',
+		store: 'components/store.js',
 		placeholder: 'components/placeholder.js',
 		slide: 'components/slide.js'
 	};
@@ -38,7 +38,7 @@
 		// 预加载项
 		preload: [
 			// Function.prototype.bind ? '' : 'es5-safe',
-			// this.JSON ? '' : 'json'
+			this.JSON ? '' : 'json',
 			'placeholder'
 		],
 

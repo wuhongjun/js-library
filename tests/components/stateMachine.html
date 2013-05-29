@@ -38,33 +38,33 @@
 		var con1 = {
 			activate: function() {
 				$('#con1').addClass('active');
-				console.log("controller 1 activated");
+				// console.log("controller 1 activated");
 			},
 			deactivate: function() {
 				$('#con1').removeClass('active');
-				console.log("controller 1 deactivated");
+				// console.log("controller 1 deactivated");
 			}
 		};
 
 		var con2 = {
 			activate: function() {
 				$('#con2').addClass('active');
-				console.log("controller 2 activated");
+				// console.log("controller 2 activated");
 			},
 			deactivate: function() {
 				$('#con2').removeClass('active');
-				console.log("controller 2 deactivated");
+				// console.log("controller 2 deactivated");
 			}
 		};
 
 		var con3 = {
 			activate: function() {
 				$('#con3').addClass('active');
-				console.log("controller 3 activated");
+				// console.log("controller 3 activated");
 			},
 			deactivate: function() {
 				$('#con3').removeClass('active');
-				console.log("controller 3 deactivated");
+				// console.log("controller 3 deactivated");
 			}
 		}
 
@@ -72,7 +72,6 @@
 		sm.add(con1);
 		sm.add(con2);
 		sm.add(con3);
-		console.log(sm);
 
 		con1.active();
 		setTimeout(function() {
@@ -81,7 +80,7 @@
 			setTimeout(function() {
 				con3.active();
 			}, 2000);
-			
+
 		}, 2000);
 
 		

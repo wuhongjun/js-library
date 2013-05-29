@@ -9,7 +9,8 @@
 	gallery						-- spm提供的已经以CMD格式封装好的通用库都在这里
 	src 						-- 源码目录
 	node_modules				-- Grunt用到的插件
-	dist						-- 发布目录
+	tests						-- 测试目录
+	seajs						-- seajs目录
 
 ## spm install
 1. node 版本不能太低，最好安装最新的 [nodejs.org](http://nodejs.org/)
@@ -21,27 +22,32 @@
 
 ## third part modules
 * underscore
-* mustache
+* json -- store.js依赖
 * jquery
-* mocha
+* handlebars
 
-## satyr modules
-* cookie
+## modules
+* base 		类库补充
 * hash 		哈希实现(md5)
 * debug
 * random 	随机
 * support
-* time
+* window
 * encode
 * sort 排序
-* copy
+
+## components 
+* cookie	
+* overlay
+* placeholder fix
+* slide
+* stateMachine   状态机
+* store.js
+* valuechange
 
 ## TODO List
-* 实现元素跟随滚动的效果 fixed
-* placeholder fix
-* modal like bootstrap modal
+* pop
 * tip
-* autocomplete
 
 ## test framework
 jasmine

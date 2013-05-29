@@ -57,6 +57,22 @@ describe('base', function() {
 		});
 	});
 
+	describe("indexOf", function() {
+		it("should return the index of the array element", function() {
+			
+			expect(S.indexOf([1, 2, 3], 2)).toBe(1);
+			expect(S.indexOf([1, 2], 3)).toBe(-1);
+		});
+	});
+
+	describe("inArray", function() {
+		it("should return true if the element in array", function() {
+			
+			expect(S.inArray([1, 2, 3], 2)).toBeTruthy();
+			expect(S.inArray([1, 2], 3)).toBeFalsy();
+		});
+	});
+
 	describe("substitute", function() {
 		var substitute,
 			context;
@@ -125,6 +141,87 @@ describe('base', function() {
 	describe('test now', function() {
 		it('should be a number', function() {
 			expect(S.now()).toEqual(jasmine.any(Number));
+		});
+	});
+
+	describe('class', function() {
+		it('should init success', function() {
+			var Person = new S.Class();
+			Person.fn.init = function(age, name, sex) {
+				this.age = age;
+				this.name = name;
+				this.sex = sex;
+			}
+
+			var person = new Person(18, 'alex', 'male');
+
+			expect(Person.fn.parent).toBe(Person);
+			expect(Person.fn.constructor).toBe(Person);
+			expect(person.age).toEqual(18);
+			expect(person.name).toEqual('alex');
+			expect(person.sex).toEqual('male');
+		});
+
+		it('should include success', function() {
+			var Person = new S.Class();
+			Person.fn.init = function(age, name, sex) {
+				this.age = age;
+				this.name = name;
+				this.sex = sex;
+			};
+			Person.include({
+				sayName: function() {
+					return "my name is " + this.name;
+				},
+				included: function(klass) {
+					// console.log('included');
+				}
+			});
+
+			var person = new Person(18, 'alex', 'male');
+
+			expect(person.sayName()).toEqual('my name is alex');
+		});
+
+		it('should extend success', function() {
+			var Person = new S.Class();
+			Person.fn.init = function(age, name, sex) {
+				this.age = age;
+				this.name = name;
+				this.sex = sex;
+			};
+			Person.extend({
+				isAnimal: true,
+				extended: function() {
+					// console.log('extended');
+				}
+			});
+			expect(Person.isAnimal).toBeTruthy();
+		});
+
+		it('should extend parent success', function() {
+			var Person = new S.Class();
+			Person.fn.init = function(age, name, sex) {
+				this.age = age;
+				this.name = name;
+				this.sex = sex;
+			};
+			Person.include({
+				sayName: function() {
+					return "my name is " + this.name;
+				}
+			});
+
+			var Star = new S.Class(Person);
+			Star.fn.init = function(title, name) {
+				this.title = title;
+				this.name = name;
+			};
+
+			var star = new Star('大明星', '方力申');
+
+			expect(Star.fn.constructor).toBe(Star);
+			expect(star.sayName()).toEqual('my name is 方力申');
 		});
 	});
 

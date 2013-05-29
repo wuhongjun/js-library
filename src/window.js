@@ -1,7 +1,7 @@
 /*
  * author: zenxds
  * email: zenxds@gmail.com
- * time
+ * window
  * export:
  */
 
@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 		body = doc.body,
 		de = document.documentElement;
 
-	return {
+	var ret = {
 		pageHeight: function() {
 			return body.scrollHeight;
 		},
@@ -32,4 +32,6 @@ define(function(require, exports, module) {
 			return window.innerWidth || (de && de.clientWidth) || body.clientWidth;
 		}
 	};
+
+	return ret;
 });

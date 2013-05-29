@@ -20,7 +20,8 @@
 		valueChange: 'components/valuechange.js',
 		store: 'components/store.js',
 		placeholder: 'components/placeholder.js',
-		slide: 'components/slide.js'
+		slide: 'components/slide.js',
+		overlay: 'components/overlay.js'
 	};
 
 	seajs.config({

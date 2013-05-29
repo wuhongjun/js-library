@@ -13,7 +13,7 @@
 	</style>
 </head>
 <body>
-	
+	<div id="list"></div>
 
 <script>
 var testArray = [
@@ -24,7 +24,9 @@ var testArray = [
 	'tests/window.spec',
 	'tests/random.spec',
 	'tests/components/cookie.spec',
-	'tests/components/store.spec'
+	'tests/components/store.spec',
+
+	'tests/handlebars.spec'
 	];
 
 seajs.use(testArray, function($) {
@@ -42,6 +44,14 @@ seajs.use(testArray, function($) {
       jasmineEnv.execute();
 	});
 });
+</script>
+
+<script id="people-template" type="text/template">
+{{#people}}
+	<div class="person">
+		<h2>{{ first_name }} & {{ last_name }}</h2>
+	</div>
+{{/people}}
 </script>
 </body>
 </html>

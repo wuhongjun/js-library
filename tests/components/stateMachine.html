@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	img {
+		border: none;
+	}
+	.con {
+		display: none;
+	}
+	.con.active {
+		display: block;
+		color: #F00;
+	}
+	</style>
+</head>
+<body>
+<div id="con1" class="con">
+	what
+</div>
+<div id="con2" class="con">
+	the
+</div>
+<div id="con3" class="con">
+	fuck
+</div>
+
+
+	<script id="seajsnode" src="../../seajs/2.0.0/sea.js" data-config="config.js"></script>
+	<script>
+	seajs.use(['jquery', 'stateMachine'], function($, S) {
+		var con1 = {
+			activate: function() {
+				$('#con1').addClass('active');
+				console.log("controller 1 activated");
+			},
+			deactivate: function() {
+				$('#con1').removeClass('active');
+				console.log("controller 1 deactivated");
+			}
+		};
+
+		var con2 = {
+			activate: function() {
+				$('#con2').addClass('active');
+				console.log("controller 2 activated");
+			},
+			deactivate: function() {
+				$('#con2').removeClass('active');
+				console.log("controller 2 deactivated");
+			}
+		};
+
+		var con3 = {
+			activate: function() {
+				$('#con3').addClass('active');
+				console.log("controller 3 activated");
+			},
+			deactivate: function() {
+				$('#con3').removeClass('active');
+				console.log("controller 3 deactivated");
+			}
+		}
+
+		var sm = new S;
+		sm.add(con1);
+		sm.add(con2);
+		sm.add(con3);
+		console.log(sm);
+
+		con1.active();
+		setTimeout(function() {
+			con2.active();
+
+			setTimeout(function() {
+				con3.active();
+			}, 2000);
+			
+		}, 2000);
+
+		
+	});
+	</script>
+</body>
+</html>

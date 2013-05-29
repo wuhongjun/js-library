@@ -21,7 +21,8 @@
 		store: 'components/store.js',
 		placeholder: 'components/placeholder.js',
 		slide: 'components/slide.js',
-		overlay: 'components/overlay.js'
+		overlay: 'components/overlay.js',
+		stateMachine: 'components/stateMachine.js'
 	};
 
 	seajs.config({

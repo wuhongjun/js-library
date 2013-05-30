@@ -44,6 +44,7 @@
 * stateMachine   状态机
 * store.js
 * valuechange
+* citySelector 城市选择器
 
 ## TODO List
 * pop

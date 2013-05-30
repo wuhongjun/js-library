@@ -1,4 +1,10 @@
-
+/*
+ * author: zenxds
+ * email: zenxds@gmail.com
+ * stateMachine
+ * export: 
+ * v1.0 2013-5-29
+ */
 define(function(require, exports, module) {
 
 	var S = require('base'),

@@ -3,6 +3,7 @@
  * email: zenxds@gmail.com
  * CitySelector
  * export: 
+ * v1.0 2013-5-30
  */
 
 define(function(require, exports, module) {

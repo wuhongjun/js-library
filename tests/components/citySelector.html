@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	img {
+		border: none;
+	}
+	</style>
+</head>
+<body>
+	<div id="cs-box"></div>
+	<script id="seajsnode" src="../../seajs/2.0.0/sea.js" data-config="config.js"></script>
+
+	<script id="cs-template" type="text/template">
+		<select class="{{className}}" id="{{prefix}}province" name="{{prefix}}province"></select>省 
+		<select class="{{className}}" id="{{prefix}}city" name="{{prefix}}city"></select>市
+		{{#ifequal level 3}}
+		<select class="{{className}}" id="{{prefix}}area" name="{{prefix}}area"></select>县
+		{{/ifequal}}
+	</script>
+	<script>
+	seajs.use('citySelector', function(CS) {
+		new CS({
+
+		});
+	});
+	</script>
+</body>
+</html>

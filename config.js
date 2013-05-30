@@ -22,7 +22,8 @@
 		placeholder: 'components/placeholder.js',
 		slide: 'components/slide.js',
 		overlay: 'components/overlay.js',
-		stateMachine: 'components/stateMachine.js'
+		stateMachine: 'components/stateMachine.js',
+		citySelector: 'components/citySelector.js'
 	};
 
 	seajs.config({

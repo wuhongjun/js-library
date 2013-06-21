@@ -73,6 +73,17 @@ describe('base', function() {
 		});
 	});
 
+	describe("curry", function() {
+		it("should bind params", function() {
+			var add = function(num1, num2) {
+				return num2 + num1;
+			};
+			var curriedAdd = S.curry(add, 5);
+
+			expect(curriedAdd(3)).toBe(8);
+		});
+	});
+
 	describe("substitute", function() {
 		var substitute,
 			context;

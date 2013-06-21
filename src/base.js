@@ -146,6 +146,19 @@ define(function(require, exports, module) {
 			});
 		},
 
+		// 函数柯里化
+		curry = function(fn) {
+			var slice = [].slice,
+				args = slice.call(arguments, 1);
+
+			return function() {
+				var innerArgs = slice.call(arguments),
+					retArgs = args.concat(innerArgs);
+
+				return fn.apply(null, retArgs);
+			};
+		},
+
 		// {{ name }} -> {{ o[name] }}
 		// \{{}} -> \{{}}
 		// based on Django, fix kissy, support blank -> {{ name }}, not only {{name}}
@@ -176,6 +189,7 @@ define(function(require, exports, module) {
 
 		now: Now,
 		throttle: throttle,
+		curry: curry,
 		substitute: substitute
 
 	};

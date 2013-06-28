@@ -29,7 +29,7 @@ define(function(require, exports, module) {
 
 	var Overlay = new S.Class;
 	Overlay.fn.init = function(options) {
-		this.options = $.extend({}, options, def);
+		this.options = $.extend({}, def, options);
 		this.options.alpha = this.options.opacity * 100;
 
 		this.render();
